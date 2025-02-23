@@ -1,4 +1,5 @@
-const { Client, Events, GatewayIntentBits, Collection } = require('discord.js')
+const { Client, Events, GatewayIntentBits, Collection, ActivityType, IntentsBitField } = require('discord.js')
+global.Discord = require('discord.js')
 
 // dotenv
 const dotenv = require('dotenv')
@@ -11,7 +12,16 @@ const path = require("node:path")
 const commandsPath = path.join(__dirname, "commands")
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith(".js"))
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] })
+const client = new Client({ 
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.GuildMessageReactions,
+        GatewayIntentBits.DirectMessages,
+        GatewayIntentBits.MessageContent
+    
+    ]})
+
 client.commands = new Collection()
 
 for (const file of commandFiles){
@@ -57,4 +67,8 @@ client.on(Events.InteractionCreate, async interaction =>{
         console.error(error)
         await interaction.reply("Houve um erro ao executar esse comando!")
     }
-})
+});
+
+// listener do set acitivity
+const readyEvent = require('./ready.js');
+client.once(Events.ClientReady, readyEvent);

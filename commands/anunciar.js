@@ -15,11 +15,7 @@ module.exports = {
         .addChannelOption(option => 
             option.setName("chat")
                 .setDescription("Mencione um canal.")
-                .setRequired(true))
-        .addStringOption(option => 
-            option.setName("cor")
-                .setDescription("Coloque uma cor em hexadecimal.")
-                .setRequired(false)),
+                .setRequired(true)),
     
     async execute(interaction) {
         if (!interaction.member.permissions.has(PermissionFlagsBits.ManageGuild)) {
@@ -33,7 +29,7 @@ module.exports = {
      
         const isValidHex = (hex) => /^#([0-9A-F]{3}){1,2}$/i.test(hex);
         if (!cor || !isValidHex(cor)) {
-            cor = "RANDOM"; 
+            cor = "#173a01"; 
         }
 
         const chat = interaction.options.getChannel("chat");

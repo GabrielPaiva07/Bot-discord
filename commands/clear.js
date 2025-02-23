@@ -18,7 +18,7 @@ module.exports = {
 
         if (numero > 99 || numero <= 0) {
             const embed = new EmbedBuilder()
-                .setColor("Random")
+                .setColor("#173a01")
                 .setDescription(`\`/clear [1 - 99]\``);
 
             await interaction.reply({ embeds: [embed], ephemeral: true });

@@ -1,0 +1,1 @@
+Projeto de um bot para discord para meu servidor pessoal!

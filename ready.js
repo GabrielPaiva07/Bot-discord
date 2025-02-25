@@ -4,7 +4,7 @@ const { ActivityType } = require("discord.js");
 
 
 module.exports = (client) => {
-    client.user.setActivity('4ºBPChq! 💀 CAVEIRA!', {
-        type: ActivityType.Watching
+    client.user.setActivity('Bendito seja o Senhor minha Rocha, que adestra minhas mãos para a peleja e os meus dedos para a guerra 💀', {
+        type: ActivityType.Custom
     });
 };
